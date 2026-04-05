@@ -518,18 +518,21 @@ a:focus-visible {
 	cursor: pointer;
 }
 
-/* 호버 시 텍스트 및 버튼 트랜지션 */
-.grid__img:hover .grid__img-content {
+/* 호버 시 텍스트 및 버튼 트랜지션 (모바일 터치 클래스 포함) */
+.grid__img:hover .grid__img-content,
+.grid__img.is-hovered .grid__img-content {
 	/* 이미지가 밝아질 때 버튼 영역 주변만 살짝 어둡게 눌러줌 */
 	background: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 70%);
 }
 
-.grid__img:hover .img-title {
+.grid__img:hover .img-title,
+.grid__img.is-hovered .img-title {
 	transform: scale(1);
 	text-shadow: 0 4px 20px rgba(0,0,0,0.9);
 }
 
-.grid__img:hover .img-link {
+.grid__img:hover .img-link,
+.grid__img.is-hovered .img-link {
 	opacity: 1;
 	transform: translateY(0);
 	transition-delay: 0.1s; /* 타이틀보다 살짝 늦게 올라옴 */

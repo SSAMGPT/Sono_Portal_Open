@@ -83,21 +83,30 @@ const animateIntro = () => {
     img.style.pointerEvents = 'auto'; // allow mouse events
     img.style.transition = 'filter 0.4s ease'; // smooth transition for brightness
     
-    img.addEventListener('mouseenter', () => {
+    const activate = () => {
       gridImages.forEach(otherImg => {
         if (otherImg !== img) {
           otherImg.style.filter = 'brightness(20%)';
+          otherImg.classList.remove('is-hovered');
         } else {
           otherImg.style.filter = 'brightness(100%)';
+          otherImg.classList.add('is-hovered');
         }
       });
-    });
+    };
     
-    img.addEventListener('mouseleave', () => {
+    const deactivate = () => {
       gridImages.forEach(otherImg => {
         otherImg.style.filter = 'brightness(100%)';
+        otherImg.classList.remove('is-hovered');
       });
-    });
+    };
+
+    img.addEventListener('mouseenter', activate);
+    img.addEventListener('mouseleave', deactivate);
+    // 모바일 터치 대응 (빈 click 리스너만 추가해도 iOS 사파리에서 hover를 인식하게 함)
+    img.addEventListener('click', activate);
+    img.addEventListener('touchstart', () => activate(), { passive: true });
   });
 };
 
