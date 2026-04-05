@@ -81,6 +81,7 @@ const animateIntro = () => {
   // Hover interaction for the split images
   gridImages.forEach(img => {
     img.style.pointerEvents = 'auto'; // allow mouse events
+    img.style.cursor = 'pointer'; // iOS 사파리 버그 해결을 위해 클릭 가능 요소로 명시적 인식시킴
     img.style.transition = 'filter 0.4s ease'; // smooth transition for brightness
     
     const activate = () => {
