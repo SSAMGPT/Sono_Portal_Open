@@ -37,7 +37,7 @@ const animateIntro = () => {
 
   // 1. Initial State Settings
   gsap.set(grid, { perspective: 1000 });
-  gsap.set(introTitle, { y: 30, autoAlpha: 0 }); // 텍스트를 살짝 아래에 숨겨둠
+  gsap.set(introTitle, { xPercent: -50, yPercent: -50, y: 30, autoAlpha: 0 }); // 텍스트/로고를 정중앙에서 살짝 아래로 숨겨둠
   
   gsap.set(gridImages, {
     x: (_, el) => calculateInitialTransform(el).x,

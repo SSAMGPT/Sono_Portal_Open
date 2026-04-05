@@ -320,6 +320,7 @@ a:focus-visible {
 	overflow: hidden;
 }
 
+
 .grid--tiny {
 	height: 60vh;
 	grid-template-columns: repeat(14,1fr);
@@ -415,7 +416,7 @@ a:focus-visible {
 }
 
 @media (max-aspect-ratio: 16/9) {
-  .grid:not(.grid--zoomed) {
+  .grid:not(.grid--zoomed):not(.grid--split) {
     width: 100%; 
     height: auto; 
     aspect-ratio: 16/9;
@@ -538,4 +539,21 @@ a:focus-visible {
 	background: #fff;
 	color: #000;
 	border-color: #fff;
+}
+
+/* 모바일 화면 요소 조정 (상하단 분리 및 타이틀-버튼 밸런스) - 우선순위를 위해 최하단 배치 */
+@media screen and (max-width: 768px) {
+	.grid--split {
+		grid-template-columns: 1fr;
+		grid-template-rows: 50vh 50vh;
+	}
+	
+	.img-title {
+		font-size: 2.5rem; /* 모바일 전용 폰트 사이즈 (1.2배 축소) */
+	}
+
+	.img-link {
+		font-size: 1rem; /* 모바일에서 버튼 크기는 날씬하게 유지 */
+		padding: 1rem 2rem 0.8rem;
+	}
 }
