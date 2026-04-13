@@ -494,7 +494,35 @@ a:focus-visible {
 	color: #fff;
 	text-transform: uppercase;
 	text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+	text-align: center;
 	transform: scale(0.95);
+	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.img-title-sub {
+	font-size: 0.8em; /* 메인 텍스트보다 약 1.2배 작게 설정 */
+	font-weight: 500;
+	display: block; /* 줄바꿈을 원할 경우 block, 아니면 제거 */
+	margin-top: 5px;
+}
+
+.img-description {
+	margin: 0;
+	font-size: 1.44rem;
+	font-weight: 400;
+	color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+	opacity: 0;
+	transform: translateY(10px);
+	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.img-btns {
+	display: flex;
+	gap: 1rem;
+	opacity: 0;
+	transform: translateY(20px);
 	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -503,19 +531,37 @@ a:focus-visible {
 	align-items: center;
 	justify-content: center;
 	font-size: 1.1rem;
-	font-weight: 700;
+	font-weight: 500;
 	line-height: 1;
-	color: #fff;
-	/* 한글 폰트의 시각적인 중심을 미세하게 맞춥니다 */
-	padding: 1.1rem 2.5rem 0.9rem; 
-	border: 1px solid rgba(255, 255, 255, 0.4);
+	/* 상/하단 패딩의 중간값으로 미세 조정하여 황금 밸런스를 찾습니다 */
+	padding: 1.05rem 1.6rem 0.75rem; 
 	border-radius: 50px;
-	backdrop-filter: blur(5px);
-	background: rgba(255, 255, 255, 0.1);
-	opacity: 0;
-	transform: translateY(20px);
-	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+	transition: all 0.3s ease;
 	cursor: pointer;
+	text-decoration: none !important;
+}
+
+.img-link--primary {
+	background: transparent;
+	color: #fff !important;
+	border: 1px solid #fff;
+}
+
+.img-link--primary:hover {
+	background: #fff;
+	color: #000 !important;
+	border-color: #fff;
+}
+
+.img-link--secondary {
+	background: transparent;
+	color: #0071e3 !important;
+	border: 1px solid #0071e3;
+}
+
+.img-link--secondary:hover {
+	background: #0071e3;
+	color: #fff !important;
 }
 
 /* 호버 시 텍스트 및 버튼 트랜지션 (모바일 터치 클래스 포함) */
@@ -531,17 +577,18 @@ a:focus-visible {
 	text-shadow: 0 4px 20px rgba(0,0,0,0.9);
 }
 
-.grid__img:hover .img-link,
-.grid__img.is-hovered .img-link {
+.grid__img:hover .img-description,
+.grid__img.is-hovered .img-description {
 	opacity: 1;
 	transform: translateY(0);
-	transition-delay: 0.1s; /* 타이틀보다 살짝 늦게 올라옴 */
+	transition-delay: 0.05s;
 }
 
-.img-link:hover {
-	background: #fff;
-	color: #000;
-	border-color: #fff;
+.grid__img:hover .img-btns,
+.grid__img.is-hovered .img-btns {
+	opacity: 1;
+	transform: translateY(0);
+	transition-delay: 0.1s; /* 타이틀/설명보다 살짝 늦게 올라옴 */
 }
 
 /* 모바일 화면 요소 조정 (상하단 분리 및 타이틀-버튼 밸런스) - 우선순위를 위해 최하단 배치 */
